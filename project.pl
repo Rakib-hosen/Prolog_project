@@ -7,7 +7,7 @@ student(shuvo, 'C173065', 4.00, econ, os, db,'Kawser Alam Shuvo').
 point(Name):-student(Name, _, Point, _, _, _,_),
              format('CGPA of ~w is ~2f.', [Name, Point]).   
 point(Id):-student(_, Id, Point, _, _, _,_),
-           format('CGPA of ~w is ~2f.', [Name, Point]).   
+           format('CGPA of ~w is ~2f.', [Id, Point]).   
 
 subject(Name):-student(Name, _, _, Firstsub, Secondsub, Thirdsub,_),
             format('~w taken these subjects: ~w, ~w, ~w.', [Name, Firstsub, Secondsub, Thirdsub]).
@@ -48,7 +48,7 @@ teacher('T000003', 'Mr. Tanveer Ahsan', 'Associate Professor & Chairman', '+8801
 teacher('T000004', 'Prof. Mohammed Shamsul Alam' ,'Professor', '01711941680', 'alam_cse@yahoo.com').
 subjectteacher('T000001',ai).
 subjectteacher('T000002',sw).
-subjectteacher('T000001',db).
+subjectteacher('T000003',db).
 
 fullinfo(Id):- teacher(Id, Fullname, Post, Mobile, Email),
                 format("Name: ~w",[Fullname]),nl,
@@ -81,6 +81,10 @@ email(Id):-teacher(Id, _, _, _, Email),
            format("Email address of ~w is ~w", [Id, Email]).
 email(Fullname):-teacher(_, Fullname, _, _, Email),
            format("Email address of ~w is ~w", [Fullname, Email]).
+
+studentsofteacher(Id):-subjectteacher(Id, Subject),
+                      subjecttook(Sid, Subject),
+                      format("~w is the student of ~w in ~w subject",[Sid, Id, Subject]).
 
 staff('st000001','jamal khan', 'Senior Assistant Director','018562546756', 'abc@gmail.com').
 staff('st000002','Momin Ullah','Administrative Assistant','04345448488', 'adc@gmail.com').
