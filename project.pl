@@ -82,4 +82,21 @@ email(Id):-teacher(Id, _, _, _, Email),
 email(Fullname):-teacher(_, Fullname, _, _, Email),
            format("Email address of ~w is ~w", [Fullname, Email]).
 
- 
+staff('st000001','jamal khan', 'Senior Assistant Director','018562546756', 'abc@gmail.com').
+staff('st000002','Momin Ullah','Administrative Assistant','04345448488', 'adc@gmail.com').
+
+
+fullname(Id):-staff(Id, Fullname, _, _, _),
+          format("~w's full name is ~w",[Id, Fullname]).
+id(Fullname):-staff(Id, Fullname, _, _, _),
+          format("Id of ~w is ~w",[Fullname, Id]).
+
+mobile(Id):-staff(Id, _, _, Mobile, _),
+            format("Mobile number of ~w is ~w", [Id, Mobile]).
+mobile(Fullname):-staff(_, Fullname, _, Mobile, _),
+            format("Mobile number of ~w is ~w", [Fullname, Mobile]).
+
+email(Id):-staff(Id, _, _, _, Email),
+           format("Email address of ~w is ~w", [Id, Email]).
+email(Fullname):-staff(_, Fullname, _, _, Email),
+           format("Email address of ~w is ~w", [Fullname, Email]).
